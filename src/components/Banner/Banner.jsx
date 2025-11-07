@@ -2,15 +2,15 @@ import React from 'react';
 import bannerImg from '../../assets/Banner.png'
 const Banner = () => {
     return (
-        <div className='mb-32 ' >
+        <div className='' >
             <div className='relative'>
-                <img className='w-full h-full object-cover' src={bannerImg} alt="" />
-                <div className='absolute top-1/2 left-0 transform -translate-y-1/2 p-24 '>
-                    <h1 className='text-white text-4xl font-bold'>Nurture Your Green Paradise</h1>
-                    <p className=' mt-4 text-xl text-white s'>Your slogan goes here</p>
-                    <div className='space-x-6 mt-4'>
-                        <button className='bg-[#CC7722] hover:bg-[#b5691d] text-white px-4 py-2 lg:px-6 lg:py-3 rounded-full transition-colors shadow-lg'>Shop Now</button>
-                        <button className='bg-[#CC7722] hover:bg-[#b5691d] text-white px-4 py-2 lg:px-6 lg:py-3 rounded-full transition-colors shadow-lg'>Call Now</button>
+                <img className='w-full h-[300px] sm:h-[400px] lg:h-[500px] object-cover' src={bannerImg} alt="" />
+                <div className='absolute top-1/2 left-0 transform -translate-y-1/2 px-4 sm:px-8 lg:px-24 py-6 sm:py-12 lg:py-24 '>
+                    <h1 className='text-white text-xl lg:text-4xl font-bold'>Nurture Your Green Paradise</h1>
+                    <p className=' mt-4 text-[18px]  lg:text-xl text-white'>Your slogan goes here</p>
+                    <div className='flex space-x-3 sm:space-x-2 lg:space-x-6 mt-4 '>
+                        <button className='bg-[#CC7722] hover:bg-[#b5691d] text-white px-3 py-2 sm:px-4 sm:py-2 lg:px-6 lg:py-3 rounded-full cursor-pointer'>Shop Now</button>
+                        <button className='bg-[#CC7722] hover:bg-[#b5691d] text-white px-3 py-2 sm:px-4 sm:py-2 lg:px-6 lg:py-3 rounded-full cursor-pointer'>Call Now</button>
                     </div>
                 </div>
                 <div className="absolute bottom-5 left-0 right-0 flex justify-center gap-2">
