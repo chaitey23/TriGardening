@@ -8,9 +8,7 @@ import arrow from '../../assets/arrow.png';
 import star from '../../assets/Star.png';
 import halfStar from '../../assets/halfStar.png';
 
-const FeaturedProductCard = () => {
-
-
+const PopularProducts = () => {
     const Rating = ({ rating, count }) => {
         const fullStars = Math.floor(rating);
         const hasHalf = rating % 1 !== 0;
@@ -19,7 +17,7 @@ const FeaturedProductCard = () => {
                 {[...Array(fullStars)].map((_, i) => (
                     <img key={i} className="w-3 h-3 sm:w-4 sm:h-4 lg:w-6 lg:h-6" src={star} alt="" />
                 ))}
-                {hasHalf && <img lassName="w-3 h-3 sm:w-4 sm:h-4 lg:w-6 lg:h-6" src={halfStar} alt="" />}
+                {hasHalf && <img className="w-3 h-3 sm:w-4 sm:h-4 lg:w-6 lg:h-6" src={halfStar} alt="" />}
                 <span className="text-[#2D5016] text-xs sm:text-sm lg:text-xl ml-1">
                     ({count})
                 </span>
@@ -65,29 +63,28 @@ const FeaturedProductCard = () => {
             count: 35
         }
     ];
-
     return (
-        <div className='bg-[#F5F5DC] relative h-auto sm:h-[500px] lg:h-[750px] mb-15 px-4 p-4 sm:px-6 lg:p-8'>
-            <h1 className='text-2xl sm:text-3xl lg:text-4xl text-[#2D5016] font-bold text-center mb-12 lg:mb-20 mt-7'>
-                Featured Product
+        <div className=' h-auto sm:h-[500px] lg:h-[750px] mb-32 px-4 p-4 sm:px-6 lg:p-6'>
+            <h1 className='text-2xl sm:text-3xl lg:text-4xl text-[#2D5016] font-bold text-center mb-12 lg:mb-4'>
+                Popular Products
             </h1>
+            <p className='text-[#2D5016] text-center mb-8 sm:mb-6 lg:mb-14'>Discover our most popular gardening essentials</p>
 
 
             <div className=' grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 max-w-7xl mx-auto'>
                 {
                     products.map((product) => (
                         <div key={product.id}>
-                            <div className='group bg-white rounded-2xl shadow-sm overflow-hidden transition-all duration-300 hover:bg-white relative cursor-pointer'>
+                            <div className='bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:bg-white relative cursor-pointer shadow-xl'>
                                 <div className='relative overflow-hidden'>
                                     <img
                                         src={product.image}
                                         className="w-full h-[140px] sm:h-[200px] object-cover transition-transform duration-300 group-hover:scale-110"
                                         alt={product.title} />
-                                    <div className="absolute inset-0 bg-white bg-opacity-20 opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
 
                                 </div>
                                 <div className="px-4 sm:px-6 py-4 relative">
-                                    <h1 className="text-[#2D5016] text-base sm:text-lg lg:text-xl font-semibold transition-colors duration-300">
+                                    <h1 className="text-[#2D5016] text-sm sm:text-lg lg:text-xl font-semibold transition-colors duration-300 truncate">
                                         {product.title}
                                     </h1>
                                     <p className="text-[#A7A7A7] text-sm sm:text-base">{product.category}</p>
@@ -95,13 +92,8 @@ const FeaturedProductCard = () => {
                                         {product.price}
                                     </p>
                                     <Rating rating={product.rating} count={product.count} />
-                                    <div className=' h-12 mt-4 mb-8  relative group'>
-                                        <button className="bg-[#2D5016] text-white w-full py-2 sm:py-3 mt-4 rounded-xl text-sm sm:text-base mb-2 cursor-pointer transition-all duration-600 absolute  group-hover:-translate-y-80"> Add to Cart </button>
-                                        <button className="bg-[#2D5016] text-white w-full py-2 sm:py-3 rounded-xl text-sm sm:text-base cursor-pointer 
-                     absolute bottom-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 "> View Details </button>
-
-                                    </div>
-                                    <div className="absolute inset-0 bg-white bg-opacity-20 opacity-0 group-hover:opacity-50 transition-opacity duration-300">
+                                    <div className=' h-12 mt-4 mb-8'>
+                                        <button className="bg-[#2D5016] text-white w-full py-2 sm:py-3 mt-4 rounded-xl text-sm sm:text-base mb-2 cursor-pointer transition-all duration-600"> Add to Cart </button>
                                     </div>
                                 </div>
                             </div>
@@ -113,8 +105,8 @@ const FeaturedProductCard = () => {
                 }
 
                 <div className="hidden lg:flex items-center justify-center
-                w-12 h-12 rounded-full 
-                absolute top-1/2 right-6 -translate-y-1/2 cursor-pointer">
+                    w-12 h-12 rounded-full 
+                    absolute top-1/2 right-6 -translate-y-1/2 cursor-pointer">
 
                     <img src={arrow} className="w-12 h-12" />
                 </div>
@@ -123,4 +115,4 @@ const FeaturedProductCard = () => {
     );
 };
 
-export default FeaturedProductCard;
+export default PopularProducts;
