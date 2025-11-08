@@ -64,27 +64,26 @@ const PopularProducts = () => {
         }
     ];
     return (
-        <div className='h-auto sm:h-[500px] lg:h-[750px]  px-4 p-4 sm:px-6 lg:p-6'>
+        <div className='relative h-auto sm:h-[500px] lg:h-[750px]  px-4 p-4 sm:px-6 lg:p-6'>
             <h1 className='text-2xl sm:text-3xl lg:text-4xl text-[#2D5016] font-bold text-center mb-12 lg:mb-4'>
                 Popular Products
             </h1>
             <p className='text-[#2D5016] text-center mb-8 sm:mb-6 lg:mb-14'>Discover our most popular gardening essentials</p>
-
-
             <div className=' grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 max-w-7xl mx-auto'>
                 {
                     products.map((product) => (
                         <div key={product.id}>
-                            <div className='bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:bg-white relative cursor-pointer shadow-xl'>
+                            <div className='group bg-white rounded-2xl shadow-sm overflow-hidden transition-all duration-300 hover:bg-white relative cursor-pointer'>
                                 <div className='relative overflow-hidden'>
                                     <img
                                         src={product.image}
                                         className="w-full h-[140px] sm:h-[200px] object-cover transition-transform duration-300 group-hover:scale-110"
                                         alt={product.title} />
 
+
                                 </div>
                                 <div className="px-4 sm:px-6 py-4 relative">
-                                    <h1 className="text-[#2D5016] text-sm sm:text-lg lg:text-xl font-semibold transition-colors duration-300 truncate">
+                                    <h1 className="text-[#2D5016] text-base sm:text-lg lg:text-xl font-semibold transition-colors duration-300">
                                         {product.title}
                                     </h1>
                                     <p className="text-[#A7A7A7] text-sm sm:text-base">{product.category}</p>
@@ -92,9 +91,12 @@ const PopularProducts = () => {
                                         {product.price}
                                     </p>
                                     <Rating rating={product.rating} count={product.count} />
-                                    <div className=' h-12 mt-4 mb-8'>
-                                        <button className="bg-[#2D5016] text-white w-full py-2 sm:py-3 mt-4 rounded-xl text-sm sm:text-base mb-2 cursor-pointer transition-all duration-600"> Add to Cart </button>
+                                    <div className=' h-12 mt-4 mb-8  relative'>
+                                        <button className="bg-[#2D5016] text-white w-full py-2 sm:py-3 mt-4 rounded-xl text-sm sm:text-base mb-2 cursor-pointer transition-all duration-600 "> Add to Cart </button>
+
+
                                     </div>
+
                                 </div>
                             </div>
 
@@ -105,8 +107,8 @@ const PopularProducts = () => {
                 }
 
                 <div className="hidden lg:flex items-center justify-center
-                    w-12 h-12 rounded-full 
-                    absolute top-1/2 right-6 -translate-y-1/2 cursor-pointer">
+                            w-12 h-12 rounded-full 
+                            absolute top-1/2 right-6 -translate-y-1/2 cursor-pointer">
 
                     <img src={arrow} className="w-12 h-12" />
                 </div>

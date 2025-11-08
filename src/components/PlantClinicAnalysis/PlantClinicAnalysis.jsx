@@ -4,7 +4,7 @@ import { IoCamera } from 'react-icons/io5';
 
 const PlantClinicAnalysis = () => {
     return (
-        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20'>
+        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 py-8 lg:py-10  mb-15'>
             <div className='flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16'>
                 {/* Text Content */}
                 <div className='lg:w-1/2 text-center lg:text-left'>
@@ -14,7 +14,7 @@ const PlantClinicAnalysis = () => {
                     <p className='text-gray-600 text-sm sm:text-base lg:text-lg mb-6 lg:mb-8 leading-relaxed max-w-2xl'>
                         Upload a photo of your plant and get instant AI-powered diagnosis with treatment recommendations from our experts
                     </p>
-                    <button className='bg-[#7A9B57]  text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base lg:text-lg font-semibold hover:bg-[#3a6720] transition-colors duration-300 shadow-md hover:shadow-lg transform hover:scale-105 transition-transform flex items-center gap-2'>
+                    <button className='bg-[#7A9B57]  text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base lg:text-lg font-semibold hover:bg-[#3a6720]  duration-300 shadow-md hover:shadow-lg transform hover:scale-105 transition-transform flex items-center gap-2'>
                         <IoCamera className='text-xl w-6 h-6' />
                         Diagnose Your Plant
                     </button>
