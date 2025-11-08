@@ -4,17 +4,12 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaEnvelope, FaPhone 
 const Footer = () => {
     return (
         <footer className="bg-[#2D5016] text-white">
-            {/* Top Section */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12">
 
                     <div className="flex flex-col justify-start items-start">
                         <div className="flex items-center mb-3">
-                            <div className="mr-3">
-                                <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                                    <span className="text-[#2D5016] font-bold text-sm">TG</span>
-                                </div>
-                            </div>
+
                             <div>
                                 <h2 className="text-xl font-bold text-white">TriGardening</h2>
                             </div>

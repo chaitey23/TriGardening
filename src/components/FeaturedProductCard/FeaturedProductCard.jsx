@@ -19,7 +19,7 @@ const FeaturedProductCard = () => {
                 {[...Array(fullStars)].map((_, i) => (
                     <img key={i} className="w-3 h-3 sm:w-4 sm:h-4 lg:w-6 lg:h-6" src={star} alt="" />
                 ))}
-                {hasHalf && <img lassName="w-3 h-3 sm:w-4 sm:h-4 lg:w-6 lg:h-6" src={halfStar} alt="" />}
+                {hasHalf && <img className="w-3 h-3 sm:w-4 sm:h-4 lg:w-6 lg:h-6" src={halfStar} alt="" />}
                 <span className="text-[#2D5016] text-xs sm:text-sm lg:text-xl ml-1">
                     ({count})
                 </span>
@@ -87,7 +87,7 @@ const FeaturedProductCard = () => {
 
                                 </div>
                                 <div className="px-4 sm:px-6 py-4 relative">
-                                    <h1 className="text-[#2D5016] text-base sm:text-lg lg:text-xl font-semibold transition-colors duration-300">
+                                    <h1 className="text-[#2D5016] text-base sm:text-lg lg:text-xl font-semibold transition-colors duration-300 truncate">
                                         {product.title}
                                     </h1>
                                     <p className="text-[#A7A7A7] text-sm sm:text-base">{product.category}</p>

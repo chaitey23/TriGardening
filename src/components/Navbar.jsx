@@ -1,18 +1,23 @@
 import React from 'react';
 import logoImg from '../assets/logo 1.png';
+import { NavLink } from 'react-router';
 
 const Navbar = () => {
     const links = (
         <>
-            <li><a className="hover:text-[#CC7722] transition-colors">Home</a></li>
-            <li><a className="hover:text-[#CC7722] transition-colors">Products</a></li>
+            <NavLink to='/'>
+                <li><a className="hover:text-[#CC7722] transition-colors">Home</a></li>
+            </NavLink>
+            <NavLink to='/products'>
+                <li><a className="hover:text-[#CC7722] transition-colors">Products</a></li>
+            </NavLink>
             <li><a className="hover:text-[#CC7722] transition-colors">Blog</a></li>
             <li><a className="hover:text-[#CC7722] transition-colors">Plant Clinic</a></li>
         </>
     );
 
     return (
-        <div className="navbar bg-[#2D5016] text-white shadow-lg px-4 lg:px-8">
+        <div className="navbar bg-[#2D5016] text-white shadow-lg px-4 lg:px-8 fixed top-0 left-0 w-full z-50">
             <div className="dropdown lg:hidden">
                 <div tabIndex={0} role="button" className="btn btn-ghost">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -15,7 +15,6 @@ const Home = () => {
             <FeaturedProductCard></FeaturedProductCard>
             <PopularProducts></PopularProducts>
             <PlantClinicAnalysis></PlantClinicAnalysis>
-            <Footer></Footer>
         </div>
     );
 };

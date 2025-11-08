@@ -83,7 +83,7 @@ const PopularProducts = () => {
 
                                 </div>
                                 <div className="px-4 sm:px-6 py-4 relative">
-                                    <h1 className="text-[#2D5016] text-base sm:text-lg lg:text-xl font-semibold transition-colors duration-300">
+                                    <h1 className="text-[#2D5016] text-base sm:text-lg lg:text-xl font-semibold transition-colors duration-300 truncate">
                                         {product.title}
                                     </h1>
                                     <p className="text-[#A7A7A7] text-sm sm:text-base">{product.category}</p>

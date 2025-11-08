@@ -16,7 +16,7 @@ const CategoryCard = () => {
                 <div className='bg-[#F5F5DC] p-6 sm:p-8 lg:p-12 rounded-2xl'>
                     <img className='w-12 h-12 p-2 rounded-full bg-white mx-auto' src={plant} alt="Plant" />
                     <h1 className='font-bold mt-3 text-lg sm:text-xl lg:text-2xl'>Plants</h1>
-                    <p className='mt-2 text-sm sm:text-base lg:text-lg'>Indoor & Outdoor Plants for every space</p>
+                    <p className='mt-2 text-sm sm:text-base lg:text-lg '>Indoor & Outdoor Plants for every space</p>
                 </div>
 
                 {/* Medicine */}
