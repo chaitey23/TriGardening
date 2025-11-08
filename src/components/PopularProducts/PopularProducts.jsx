@@ -64,7 +64,7 @@ const PopularProducts = () => {
         }
     ];
     return (
-        <div className=' h-auto sm:h-[500px] lg:h-[750px] mb-32 px-4 p-4 sm:px-6 lg:p-6'>
+        <div className='h-auto sm:h-[500px] lg:h-[750px]  px-4 p-4 sm:px-6 lg:p-6'>
             <h1 className='text-2xl sm:text-3xl lg:text-4xl text-[#2D5016] font-bold text-center mb-12 lg:mb-4'>
                 Popular Products
             </h1>
