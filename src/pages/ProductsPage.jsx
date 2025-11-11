@@ -6,8 +6,8 @@ import PruningImg from '../../src/assets/Pexels Photo by Pavel Danilyuk.png';
 import SnakeImg from '../../src/assets/Pexels Photo by Fabian Stroobants.png';
 import star from '../../src/assets/Star.png';
 import halfStar from '../../src/assets/halfStar.png';
+import { Link } from 'react-router';
 const ProductsPage = () => {
-
     const products = [
         {
             id: 1,
@@ -64,7 +64,6 @@ const ProductsPage = () => {
             count: 24
         },
     ];
-
     const Rating = ({ rating, count }) => {
         const fullStars = Math.floor(rating);
         const hasHalf = rating % 1 !== 0;
@@ -223,34 +222,31 @@ const ProductsPage = () => {
                             {
                                 products.map((product) => (
                                     <div key={product.id}>
-                                        <div className='group bg-white rounded-2xl shadow-sm overflow-hidden transition-all duration-300 hover:bg-white relative cursor-pointer'>
-                                            <div className='relative overflow-hidden'>
-                                                <img
-                                                    src={product.image}
-                                                    className="w-full h-[140px] sm:h-[200px] object-cover transition-transform duration-300 group-hover:scale-110"
-                                                    alt={product.title} />
-
-
-                                            </div>
-                                            <div className="px-4 sm:px-6 py-4 relative">
-                                                <h1 className="text-[#2D5016] text-base sm:text-lg lg:text-xl font-semibold transition-colors duration-300 truncate">
-                                                    {product.title}
-                                                </h1>
-                                                <p className="text-[#A7A7A7] text-sm sm:text-base">{product.category}</p>
-                                                <p className="mt-2 text-[#CC7722] font-bold text-lg sm:text-xl lg:text-2xl">
-                                                    {product.price}
-                                                </p>
-                                                <Rating rating={product.rating} count={product.count} />
-                                                <div className=' h-12 mt-4 mb-8  relative'>
-                                                    <button className="bg-[#2D5016] text-white w-full py-2 sm:py-3 mt-4 rounded-xl text-sm sm:text-base mb-2 cursor-pointer transition-all duration-600 "> Add to Cart </button>
+                                        <Link to={`/products/${product.id}`}>
+                                            <div className='group bg-white rounded-2xl shadow-sm overflow-hidden transition-all duration-300 hover:bg-white relative cursor-pointer'>
+                                                <div className='relative overflow-hidden'>
+                                                    <img
+                                                        src={product.image}
+                                                        className="w-full h-[140px] sm:h-[200px] object-cover transition-transform duration-300 group-hover:scale-110"
+                                                        alt={product.title} />
 
 
                                                 </div>
-
+                                                <div className="px-4 sm:px-6 py-4 relative">
+                                                    <h1 className="text-[#2D5016] text-base sm:text-lg lg:text-xl font-semibold transition-colors duration-300 truncate">
+                                                        {product.title}
+                                                    </h1>
+                                                    <p className="text-[#A7A7A7] text-sm sm:text-base">{product.category}</p>
+                                                    <p className="mt-2 text-[#CC7722] font-bold text-lg sm:text-xl lg:text-2xl">
+                                                        {product.price}
+                                                    </p>
+                                                    <Rating rating={product.rating} count={product.count} />
+                                                    <div className=' h-12 mt-4 mb-8'>
+                                                        <button className="bg-[#2D5016] text-white w-full py-2 sm:py-3 mt-4 rounded-xl text-sm sm:text-base mb-2 cursor-pointer transition-all "> Add to Cart </button>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-
-
+                                        </Link>
                                     </div>
 
                                 ))

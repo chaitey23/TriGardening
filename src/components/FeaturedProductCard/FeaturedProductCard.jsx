@@ -7,10 +7,9 @@ import arrow from '../../assets/arrow.png';
 
 import star from '../../assets/Star.png';
 import halfStar from '../../assets/halfStar.png';
+import { Link } from 'react-router';
 
 const FeaturedProductCard = () => {
-
-
     const Rating = ({ rating, count }) => {
         const fullStars = Math.floor(rating);
         const hasHalf = rating % 1 !== 0;
@@ -97,12 +96,16 @@ const FeaturedProductCard = () => {
                                     <Rating rating={product.rating} count={product.count} />
                                     <div className=' h-12 mt-4 mb-8  relative group'>
                                         <button className="bg-[#2D5016] text-white w-full py-2 sm:py-3 mt-4 rounded-xl text-sm sm:text-base mb-2 cursor-pointer transition-all duration-600 absolute  group-hover:-translate-y-80"> Add to Cart </button>
-                                        <button className="bg-[#2D5016] text-white w-full py-2 sm:py-3 rounded-xl text-sm sm:text-base cursor-pointer 
+                                        <Link to={`/products/${product.id}`}>
+                                            <button className="bg-[#2D5016] text-white w-full py-2 sm:py-3 rounded-xl text-sm sm:text-base cursor-pointer 
                      absolute bottom-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 "> View Details </button>
+                                        </Link>
 
                                     </div>
-                                    <div className="absolute inset-0 bg-white bg-opacity-20 opacity-0 group-hover:opacity-50 transition-opacity duration-300">
+                                    <div className="absolute inset-0 bg-white bg-opacity-20 opacity-0 
+group-hover:opacity-50 transition-opacity duration-300 pointer-events-none">
                                     </div>
+
                                 </div>
                             </div>
 

@@ -6,13 +6,15 @@ const Navbar = () => {
     const links = (
         <>
             <NavLink to='/'>
-                <li><a className="hover:text-[#CC7722] transition-colors">Home</a></li>
+                <li className="hover:text-[#CC7722] transition-colors">Home</li>
             </NavLink>
             <NavLink to='/products'>
-                <li><a className="hover:text-[#CC7722] transition-colors">Products</a></li>
+                <li className="hover:text-[#CC7722] transition-colors">Products</li>
             </NavLink>
-            <li><a className="hover:text-[#CC7722] transition-colors">Blog</a></li>
-            <li><a className="hover:text-[#CC7722] transition-colors">Plant Clinic</a></li>
+            <NavLink to='/blogs'>
+                <li className="hover:text-[#CC7722] transition-colors"> Blog</li>
+            </NavLink>
+            <li className="hover:text-[#CC7722] transition-colors">Plant Clinic</li>
         </>
     );
 

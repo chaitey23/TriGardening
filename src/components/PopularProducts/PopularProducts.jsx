@@ -93,14 +93,9 @@ const PopularProducts = () => {
                                     <Rating rating={product.rating} count={product.count} />
                                     <div className=' h-12 mt-4 mb-8  relative'>
                                         <button className="bg-[#2D5016] text-white w-full py-2 sm:py-3 mt-4 rounded-xl text-sm sm:text-base mb-2 cursor-pointer transition-all duration-600 "> Add to Cart </button>
-
-
                                     </div>
-
                                 </div>
                             </div>
-
-
                         </div>
 
                     ))
