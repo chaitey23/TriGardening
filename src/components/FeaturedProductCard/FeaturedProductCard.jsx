@@ -66,13 +66,13 @@ const FeaturedProductCard = () => {
     ];
 
     return (
-        <div className=' bg-[#F5F5DC] relative h-auto sm:h-[500px] lg:h-[750px] mb-15 px-4 p-4 sm:px-6 lg:p-8'>
+        <div className=' bg-[#F5F5DC] relative mb-15 px-4 p-4 sm:px-6 lg:p-8'>
             <h1 className='text-2xl sm:text-3xl lg:text-4xl text-[#2D5016] font-bold text-center mb-12 lg:mb-20 mt-7'>
                 Featured Product
             </h1>
 
 
-            <div className=' grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 max-w-7xl mx-auto'>
+            <div className=' grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 max-w-7xl mx-auto'>
                 {
                     products.map((product) => (
                         <div key={product.id}>

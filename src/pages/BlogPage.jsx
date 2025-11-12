@@ -69,19 +69,28 @@ const BlogPage = ({ id }) => {
             <div className="flex flex-col lg:flex-row gap-10">
                 {/* Left Main Content */}
                 <div className="lg:w-3/4 space-y-8 cursor-pointer">
-                    <div className='relative'>
-                        <img src={blogCover} alt="" className="w-full rounded-xl object-cover" />
-                        <div className='absolute bottom-4 sm:bottom-8 left-4 sm:left-8 right-4 text-white'>
-                            <h1 className="text-xl sm:text-3xl font-bold drop-shadow-lg">
-                                Your Blogpost Title goes here:
+                    <div className="relative w-full">
+                        <img
+                            src={blogCover}
+                            alt="Blog Cover"
+                            className="w-full h-auto max-h-[600px] sm:max-h-[500px] md:max-h-[400px] lg:max-h-[600px] rounded-xl object-cover"
+                        />
+
+                        {/* Overlay for text */}
+                        <div className="absolute  rounded-xl"></div>
+
+                        <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-8 right-4 text-white">
+                            <h1 className="text-lg sm:text-2xl md:text-3xl font-bold drop-shadow-lg">
+                                Your Blogpost Title goes here
                             </h1>
-                            <p className="text-sm sm:text-base mt-1 drop-shadow-md">
-                                Your blogpost first paragraph sentence goes here....
+                            <p className="text-xs sm:text-sm md:text-base mt-2 drop-shadow-md">
+                                Your blogpost first paragraph sentence goes here...
                             </p>
 
-                            <div className="flex flex-wrap items-center gap-2 sm:gap-3 mt-4 text-xs sm:text-sm">
+                            <div className="flex flex-wrap items-center gap-2 sm:gap-3 mt-3 text-xs sm:text-sm md:text-base">
                                 <img
                                     src={writerImg}
+                                    alt="Writer"
                                     className="w-6 h-6 sm:w-8 sm:h-8 rounded-full object-cover"
                                 />
                                 <span className="drop-shadow-md">Writer’s Name</span>
@@ -90,6 +99,7 @@ const BlogPage = ({ id }) => {
                             </div>
                         </div>
                     </div>
+
 
                     {/* Blog Cards Grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

@@ -6,6 +6,7 @@ import BlogPage from "../pages/BlogPage";
 import ProductDetailsPage from "../pages/ProductDetailsPage";
 import BlogDetails from "../pages/BlogDetails";
 import AboutPage from "../pages/AboutPage";
+import AIChatbotPage from "../pages/AIChatbotPage";
 
 
 export const router = createBrowserRouter([
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
         {
             path: "/about",
             element: <AboutPage></AboutPage>
+        },
+        {
+            path: "/botPage",
+            element: <AIChatbotPage></AIChatbotPage>
         }
 
 

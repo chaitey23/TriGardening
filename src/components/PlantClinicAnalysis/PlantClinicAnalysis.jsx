@@ -14,10 +14,13 @@ const PlantClinicAnalysis = () => {
                     <p className='text-gray-600 text-sm sm:text-base lg:text-lg mb-6 lg:mb-8 leading-relaxed max-w-2xl'>
                         Upload a photo of your plant and get instant AI-powered diagnosis with treatment recommendations from our experts
                     </p>
-                    <button className='bg-[#7A9B57]  text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base lg:text-lg font-semibold hover:bg-[#3a6720]  duration-300 shadow-md hover:shadow-lg transform hover:scale-105 transition-transform flex items-center gap-2'>
-                        <IoCamera className='text-xl w-6 h-6' />
-                        Diagnose Your Plant
-                    </button>
+                    <div className="flex justify-center lg:justify-start">
+                        <button className='bg-[#7A9B57] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base lg:text-lg font-semibold hover:bg-[#3a6720] duration-300 shadow-md hover:shadow-lg transform hover:scale-105 transition-transform flex items-center gap-2'>
+                            <IoCamera className='text-xl w-6 h-6' />
+                            Diagnose Your Plant
+                        </button>
+                    </div>
+
                 </div>
 
                 {/* Image */}
