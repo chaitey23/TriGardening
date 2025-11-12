@@ -7,6 +7,7 @@ import ProductDetailsPage from "../pages/ProductDetailsPage";
 import BlogDetails from "../pages/BlogDetails";
 import AboutPage from "../pages/AboutPage";
 import AIChatbotPage from "../pages/AIChatbotPage";
+import CartPage from "../pages/CartPage";
 
 
 export const router = createBrowserRouter([
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
         {
             path: "/botPage",
             element: <AIChatbotPage></AIChatbotPage>
+        },
+        {
+            path: "/cart",
+            element: <CartPage></CartPage>
         }
 
 
