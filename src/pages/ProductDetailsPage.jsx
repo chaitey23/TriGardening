@@ -52,7 +52,8 @@ const ProductDetailsPage = () => {
             rating: 4.5,
             count: 35,
             description: "Snake Plants are easy to care for and great for purifying indoor air."
-        }
+        },
+
     ];
 
     const product = products.find(p => p.id === parseInt(id));

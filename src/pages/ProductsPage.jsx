@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaFilter, FaChevronRight } from 'react-icons/fa';
 import monsteraImg from '../../src/assets/Group 6.png';
 import organicImg from '../../src/assets/Pexels Photo by Anna Shvets.png';
@@ -6,14 +6,21 @@ import PruningImg from '../../src/assets/Pexels Photo by Pavel Danilyuk.png';
 import SnakeImg from '../../src/assets/Pexels Photo by Fabian Stroobants.png';
 import star from '../../src/assets/Star.png';
 import halfStar from '../../src/assets/halfStar.png';
+import seedsImg from '../assets/seed.png';
+import medicineImg from '../assets/medicine.png';
+import equipmentImg from '../assets/Equipment.png';
+import goldenPlant from '../assets/goldenPlant.png'
 import { Link } from 'react-router';
 const ProductsPage = () => {
+    const [selectedCategory, setSelectedCategory] = useState("All");
+
+
     const products = [
         {
             id: 1,
             image: monsteraImg,
             title: "Monstera Deliciosa",
-            category: "Indoor Plant",
+            category: "Plant",
             price: "৳ 2000 - 3,400",
             rating: 5,
             count: 24
@@ -40,30 +47,52 @@ const ProductsPage = () => {
             id: 4,
             image: SnakeImg,
             title: "Snake Plant",
-            category: "Indoor Plant",
+            category: "Plant",
             price: "৳ 150 - 500",
             rating: 4.5,
             count: 35
         },
         {
             id: 5,
-            image: organicImg,
-            title: "Organic Compost Fertilizer",
-            category: "Fertilizer",
-            price: "৳ 60 - 440",
-            rating: 4.5,
+            image: seedsImg,
+            title: "Tomato Seed",
+            category: "Seed",
+            price: "৳ 60 - 300",
+            rating: 5,
             count: 12
         },
         {
             id: 6,
-            image: monsteraImg,
-            title: "Monstera Deliciosa",
-            category: "Indoor Plant",
+            image: medicineImg,
+            title: "Rooting Hormone",
+            category: "Medicine",
+            price: "৳ 200 -400",
+            rating: 5,
+            count: 12
+        },
+        {
+            id: 7,
+            image: equipmentImg,
+            title: "Plant Tob",
+            category: "Equipment",
             price: "৳ 2000 - 3,400",
             rating: 5,
             count: 24
         },
+        {
+            id: 8,
+            image: goldenPlant,
+            title: "Golden Pothos",
+            category: "Plant",
+            price: "৳ 300 - 350",
+            rating: 5,
+            count: 12
+        },
     ];
+    const filteredProducts =
+        selectedCategory === "All"
+            ? products
+            : products.filter((p) => p.category.toLowerCase() === (selectedCategory.toLowerCase()));
     const Rating = ({ rating, count }) => {
         const fullStars = Math.floor(rating);
         const hasHalf = rating % 1 !== 0;
@@ -89,14 +118,14 @@ const ProductsPage = () => {
                     <div className="max-w-7xl mx-auto px-4">
                         <div className="flex py-4">
                             <div className="flex space-x-8 text-[15px] text-gray-700 overflow-x-auto">
-                                {['Home', 'Plants', 'Tools', 'Fertilizers', 'Seeds', 'Medicine', 'Equipments'].map((item) => (
-                                    <a
+                                {['All', 'Plant', 'Tool', 'Fertilizer', 'Seed', 'Medicine', 'Equipment'].map((item) => (
+                                    <button onClick={() => setSelectedCategory(item)}
                                         key={item}
                                         href="#"
-                                        className={`hover:text-[#2D5016] transition-colors whitespace-nowrap ${item === 'Plants' ? 'text-[#2D5016] font-medium underline' : ''}`}
+                                        className={`hover:text-[#2D5016] transition-colors whitespace-nowrap ${selectedCategory === item ? 'text-[#2D5016] font-medium underline' : ''}`}
                                     >
                                         {item}
-                                    </a>
+                                    </button>
                                 ))}
                             </div>
                         </div>
@@ -109,7 +138,10 @@ const ProductsPage = () => {
                             <FaChevronRight className="w-3 h-3 " />
                             <span className="hover:text-[#2D5016] cursor-pointer whitespace-nowrap">Products</span>
                             <FaChevronRight className="w-3 h-3 " />
-                            <span className="text-[#2D5016] font-medium whitespace-nowrap">Plants</span>
+                            <span className="hover:text-[#2D5016] cursor-pointer whitespace-nowrap">
+                                {selectedCategory}
+                            </span>
+
                         </div>
                     </div>
                 </div>
@@ -199,11 +231,15 @@ const ProductsPage = () => {
 
                         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
                             <div className="text-gray-700">
-                                <span className="font-semibold">Plants</span>
+                                <span className="font-semibold">{selectedCategory === 'All' ? 'Plants' : selectedCategory}</span>
                                 <span className="mx-2">•</span>
-                                <span className="text-sm">Showing 10 of 40 products</span>
+                                <span className="text-sm">
+                                    Showing {filteredProducts.length} of {products.filter(p => selectedCategory === 'All' ? true : p.category === selectedCategory).length} products
+                                </span>
+
                             </div>
-                            {/* Sort By Dropdown - Right aligned */}
+
+
                             <div className="flex items-center space-x-2 w-full sm:w-auto">
                                 <span className="text-sm text-gray-600 whitespace-nowrap">Sort by:</span>
                                 <select className="bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2D5016] focus:border-transparent w-full sm:w-auto">
@@ -217,48 +253,60 @@ const ProductsPage = () => {
 
                         </div>
 
-                        {/* Products Grid */}
-                        <div className=' grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto'>
+                        <div className='mt-8'>
                             {
-                                products.map((product) => (
-                                    <div key={product.id}>
-                                        <Link to={`/products/${product.id}`}>
-                                            <div className='group bg-white rounded-2xl shadow-sm overflow-hidden transition-all duration-300 hover:bg-white relative cursor-pointer'>
-                                                <div className='relative overflow-hidden'>
-                                                    <img
-                                                        src={product.image}
-                                                        className="w-full h-[140px] sm:h-[200px] object-cover transition-transform duration-300 group-hover:scale-110"
-                                                        alt={product.title} />
+                                filteredProducts.length === 0 ? (
+                                    <p className="text-center text-gray-500 text-lg font-medium py-10 animate-pulse">
+                                        No products found in this category 🌱
+                                    </p>
+                                ) : (
+                                    <>
+                                        <div className=' grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto'>
+                                            {
+                                                filteredProducts.map((product) => (
+                                                    <div key={product.id}>
+                                                        <Link to={`/products/${product.id}`}>
+                                                            <div className='group bg-white rounded-2xl shadow-sm overflow-hidden transition-all duration-300 hover:bg-white relative cursor-pointer'>
+                                                                <div className='relative overflow-hidden'>
+                                                                    <img
+                                                                        src={product.image}
+                                                                        className="w-full h-[140px] sm:h-[200px] object-cover transition-transform duration-300 group-hover:scale-110"
+                                                                        alt={product.title} />
 
 
-                                                </div>
-                                                <div className="px-4 sm:px-6 py-4 relative">
-                                                    <h1 className="text-[#2D5016] text-base sm:text-lg lg:text-xl font-semibold transition-colors duration-300 truncate">
-                                                        {product.title}
-                                                    </h1>
-                                                    <p className="text-[#A7A7A7] text-sm sm:text-base">{product.category}</p>
-                                                    <p className="mt-2 text-[#CC7722] font-bold text-lg sm:text-xl lg:text-2xl">
-                                                        {product.price}
-                                                    </p>
-                                                    <Rating rating={product.rating} count={product.count} />
-                                                    <div className=' h-12 mt-4 mb-8'>
-                                                        <button className="bg-[#2D5016] text-white w-full py-2 sm:py-3 mt-4 rounded-xl text-sm sm:text-base mb-2 cursor-pointer transition-all "> Add to Cart </button>
+                                                                </div>
+                                                                <div className="px-4 sm:px-6 py-4 relative">
+                                                                    <h1 className="text-[#2D5016] text-base sm:text-lg lg:text-xl font-semibold transition-colors duration-300 truncate">
+                                                                        {product.title}
+                                                                    </h1>
+                                                                    <p className="text-[#A7A7A7] text-sm sm:text-base">{product.category}</p>
+                                                                    <p className="mt-2 text-[#CC7722] font-bold text-lg sm:text-xl lg:text-2xl">
+                                                                        {product.price}
+                                                                    </p>
+                                                                    <Rating rating={product.rating} count={product.count} />
+                                                                    <div className=' h-12 mt-4 mb-8'>
+                                                                        <button className="bg-[#2D5016] text-white w-full py-2 sm:py-3 mt-4 rounded-xl text-sm sm:text-base mb-2 cursor-pointer transition-all "> Add to Cart </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </Link>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </Link>
-                                    </div>
 
-                                ))
+                                                ))
+                                            }
+                                        </div>
+                                        <div className="text-center mt-12">
+                                            <button className="bg-[#7A9B57] text-white px-14 py-3.5 rounded-lg hover:bg-[#3a6720] transition-colors font-medium text-[15px] mt-5 mb-12">
+                                                Load More Products
+                                            </button>
+                                        </div>
+                                    </>
+                                )
                             }
                         </div>
 
-                        {/* Load More Button */}
-                        <div className="text-center mt-12">
-                            <button className="bg-[#7A9B57] text-white px-14 py-3.5 rounded-lg hover:bg-[#3a6720] transition-colors font-medium text-[15px] mt-5 mb-12">
-                                Load More Products
-                            </button>
-                        </div>
+
+
                     </div>
                 </div>
             </div>
