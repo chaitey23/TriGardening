@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaFilter, FaChevronRight } from 'react-icons/fa';
+import { FaChevronRight } from 'react-icons/fa';
 import monsteraImg from '../../src/assets/Group 6.png';
 import organicImg from '../../src/assets/Pexels Photo by Anna Shvets.png';
 import PruningImg from '../../src/assets/Pexels Photo by Pavel Danilyuk.png';
@@ -9,86 +9,75 @@ import halfStar from '../../src/assets/halfStar.png';
 import seedsImg from '../assets/seed.png';
 import medicineImg from '../assets/medicine.png';
 import equipmentImg from '../assets/Equipment.png';
-import goldenPlant from '../assets/goldenPlant.png'
+import goldenPlant from '../assets/goldenPlant.png';
+import authorImg from '../assets/blogAuthor.png'
 import { Link } from 'react-router';
+export const products = [
+    {
+        id: 1,
+        image: monsteraImg, title: "Monstera Deliciosa", category: "Plant", price: "৳ 2000 - 3,400", rating: 5, count: 24,
+        description: `সাধারণ লাল টমেটো কেন ফলাবেন, যখন আপনি একটি আস্ত রংধনু ফলাতে পারেন? বিগ রেইনবো হলো একটি অসাধারণ জাতের বিফস্টেক টমেটো, যা তার বিশাল আকার এবং আকর্ষণীয়, বহু-রঙা আবরণের জন্য বিখ্যাত। পাকার সাথে সাথে প্রতিটি টমেটো হলুদ, কমলা এবং গাঢ় লাল রঙের ছটায় এক একটি অনন্য শিল্পকর্মে পরিণত হয়, যা যেকোনো বাগানের প্রধান আকর্ষণ হয়ে ওঠে।
+   
+   এর সৌন্দর্য শুধু বাইরেই নয়। কাটলে ভেতরে দেখবেন ঘন, মাংসল এবং খুব কম বীজসহ উজ্জ্বল সোনালী-কমলা শাঁস। এর স্বাদ অত্যন্ত মিষ্টি ও ফলের মতো, এবং এতে অ্যাসিডিটি কম, যা প্রতিটি কামড়ে গ্রীষ্মের রোদের নিখুঁত স্বাদ এনে দেয়। এই বিশাল আকারের টমেটোগুলো প্রতিটি প্রায় ২ পাউন্ড (৯০০ গ্রাম) পর্যন্ত হতে পারে, যার একটি স্লাইসই পুরো স্যান্ডউইচ ঢাকার জন্য যথেষ্ট!
+   `,
+        authorImage: authorImg,
+        authorName: "Ismita Chowdhury"
+    },
+    {
+        id: 2, image: organicImg, title: "Organic Compost Fertilizer", category: "Fertilizer", price: "৳ 60 - 440", rating: 4.5, count: 12, description: `সাধারণ লাল টমেটো কেন ফলাবেন, যখন আপনি একটি আস্ত রংধনু ফলাতে পারেন? বিগ রেইনবো হলো একটি অসাধারণ জাতের বিফস্টেক টমেটো, যা তার বিশাল আকার এবং আকর্ষণীয়, বহু-রঙা আবরণের জন্য বিখ্যাত। পাকার সাথে সাথে প্রতিটি টমেটো হলুদ, কমলা এবং গাঢ় লাল রঙের ছটায় এক একটি অনন্য শিল্পকর্মে পরিণত হয়, যা যেকোনো বাগানের প্রধান আকর্ষণ হয়ে ওঠে।
+   
+   এর সৌন্দর্য শুধু বাইরেই নয়। কাটলে ভেতরে দেখবেন ঘন, মাংসল এবং খুব কম বীজসহ উজ্জ্বল সোনালী-কমলা শাঁস। এর স্বাদ অত্যন্ত মিষ্টি ও ফলের মতো, এবং এতে অ্যাসিডিটি কম, যা প্রতিটি কামড়ে গ্রীষ্মের রোদের নিখুঁত স্বাদ এনে দেয়। এই বিশাল আকারের টমেটোগুলো প্রতিটি প্রায় ২ পাউন্ড (৯০০ গ্রাম) পর্যন্ত হতে পারে, যার একটি স্লাইসই পুরো স্যান্ডউইচ ঢাকার জন্য যথেষ্ট!
+   ` , authorImage: authorImg,
+        authorName: "Ismita Chowdhury"
+    },
+    {
+        id: 3, image: PruningImg, title: "Pruning Shears", category: "Equipment", price: "৳ 180 - 450", rating: 4.5, count: 34, description: `সাধারণ লাল টমেটো কেন ফলাবেন, যখন আপনি একটি আস্ত রংধনু ফলাতে পারেন? বিগ রেইনবো হলো একটি অসাধারণ জাতের বিফস্টেক টমেটো, যা তার বিশাল আকার এবং আকর্ষণীয়, বহু-রঙা আবরণের জন্য বিখ্যাত। পাকার সাথে সাথে প্রতিটি টমেটো হলুদ, কমলা এবং গাঢ় লাল রঙের ছটায় এক একটি অনন্য শিল্পকর্মে পরিণত হয়, যা যেকোনো বাগানের প্রধান আকর্ষণ হয়ে ওঠে।
+   
+   এর সৌন্দর্য শুধু বাইরেই নয়। কাটলে ভেতরে দেখবেন ঘন, মাংসল এবং খুব কম বীজসহ উজ্জ্বল সোনালী-কমলা শাঁস। এর স্বাদ অত্যন্ত মিষ্টি ও ফলের মতো, এবং এতে অ্যাসিডিটি কম, যা প্রতিটি কামড়ে গ্রীষ্মের রোদের নিখুঁত স্বাদ এনে দেয়। এই বিশাল আকারের টমেটোগুলো প্রতিটি প্রায় ২ পাউন্ড (৯০০ গ্রাম) পর্যন্ত হতে পারে, যার একটি স্লাইসই পুরো স্যান্ডউইচ ঢাকার জন্য যথেষ্ট!
+   `, authorImage: authorImg,
+        authorName: "Ismita Chowdhury"
+    },
+    {
+        id: 4, image: SnakeImg, title: "Snake Plant", category: "Plant", price: "৳ 150 - 500", rating: 4.5, count: 35, description: `সাধারণ লাল টমেটো কেন ফলাবেন, যখন আপনি একটি আস্ত রংধনু ফলাতে পারেন? বিগ রেইনবো হলো একটি অসাধারণ জাতের বিফস্টেক টমেটো, যা তার বিশাল আকার এবং আকর্ষণীয়, বহু-রঙা আবরণের জন্য বিখ্যাত। পাকার সাথে সাথে প্রতিটি টমেটো হলুদ, কমলা এবং গাঢ় লাল রঙের ছটায় এক একটি অনন্য শিল্পকর্মে পরিণত হয়, যা যেকোনো বাগানের প্রধান আকর্ষণ হয়ে ওঠে।
+   
+   এর সৌন্দর্য শুধু বাইরেই নয়। কাটলে ভেতরে দেখবেন ঘন, মাংসল এবং খুব কম বীজসহ উজ্জ্বল সোনালী-কমলা শাঁস। এর স্বাদ অত্যন্ত মিষ্টি ও ফলের মতো, এবং এতে অ্যাসিডিটি কম, যা প্রতিটি কামড়ে গ্রীষ্মের রোদের নিখুঁত স্বাদ এনে দেয়। এই বিশাল আকারের টমেটোগুলো প্রতিটি প্রায় ২ পাউন্ড (৯০০ গ্রাম) পর্যন্ত হতে পারে, যার একটি স্লাইসই পুরো স্যান্ডউইচ ঢাকার জন্য যথেষ্ট!
+   ` , authorImage: authorImg,
+        authorName: "Ismita Chowdhury"
+    },
+    {
+        id: 5, image: seedsImg, title: "Tomato Seed", category: "Seed", price: "৳ 60 - 300", rating: 5, count: 12, description: `সাধারণ লাল টমেটো কেন ফলাবেন, যখন আপনি একটি আস্ত রংধনু ফলাতে পারেন? বিগ রেইনবো হলো একটি অসাধারণ জাতের বিফস্টেক টমেটো, যা তার বিশাল আকার এবং আকর্ষণীয়, বহু-রঙা আবরণের জন্য বিখ্যাত। পাকার সাথে সাথে প্রতিটি টমেটো হলুদ, কমলা এবং গাঢ় লাল রঙের ছটায় এক একটি অনন্য শিল্পকর্মে পরিণত হয়, যা যেকোনো বাগানের প্রধান আকর্ষণ হয়ে ওঠে।
+   
+   এর সৌন্দর্য শুধু বাইরেই নয়। কাটলে ভেতরে দেখবেন ঘন, মাংসল এবং খুব কম বীজসহ উজ্জ্বল সোনালী-কমলা শাঁস। এর স্বাদ অত্যন্ত মিষ্টি ও ফলের মতো, এবং এতে অ্যাসিডিটি কম, যা প্রতিটি কামড়ে গ্রীষ্মের রোদের নিখুঁত স্বাদ এনে দেয়। এই বিশাল আকারের টমেটোগুলো প্রতিটি প্রায় ২ পাউন্ড (৯০০ গ্রাম) পর্যন্ত হতে পারে, যার একটি স্লাইসই পুরো স্যান্ডউইচ ঢাকার জন্য যথেষ্ট!
+   `, authorImage: authorImg,
+        authorName: "Ismita Chowdhury"
+    },
+    {
+        id: 6, image: medicineImg, title: "Rooting Hormone", category: "Medicine", price: "৳ 200 - 400", rating: 5, count: 12, description: `সাধারণ লাল টমেটো কেন ফলাবেন, যখন আপনি একটি আস্ত রংধনু ফলাতে পারেন? বিগ রেইনবো হলো একটি অসাধারণ জাতের বিফস্টেক টমেটো, যা তার বিশাল আকার এবং আকর্ষণীয়, বহু-রঙা আবরণের জন্য বিখ্যাত। পাকার সাথে সাথে প্রতিটি টমেটো হলুদ, কমলা এবং গাঢ় লাল রঙের ছটায় এক একটি অনন্য শিল্পকর্মে পরিণত হয়, যা যেকোনো বাগানের প্রধান আকর্ষণ হয়ে ওঠে।
+   
+   এর সৌন্দর্য শুধু বাইরেই নয়। কাটলে ভেতরে দেখবেন ঘন, মাংসল এবং খুব কম বীজসহ উজ্জ্বল সোনালী-কমলা শাঁস। এর স্বাদ অত্যন্ত মিষ্টি ও ফলের মতো, এবং এতে অ্যাসিডিটি কম, যা প্রতিটি কামড়ে গ্রীষ্মের রোদের নিখুঁত স্বাদ এনে দেয়। এই বিশাল আকারের টমেটোগুলো প্রতিটি প্রায় ২ পাউন্ড (৯০০ গ্রাম) পর্যন্ত হতে পারে, যার একটি স্লাইসই পুরো স্যান্ডউইচ ঢাকার জন্য যথেষ্ট!
+   `, authorImage: authorImg,
+        authorName: "Ismita Chowdhury"
+    },
+    {
+        id: 7, image: equipmentImg, title: "Plant Tob", category: "Equipment", price: "৳ 2000 - 3,400", rating: 5, count: 24, description: `সাধারণ লাল টমেটো কেন ফলাবেন, যখন আপনি একটি আস্ত রংধনু ফলাতে পারেন? বিগ রেইনবো হলো একটি অসাধারণ জাতের বিফস্টেক টমেটো, যা তার বিশাল আকার এবং আকর্ষণীয়, বহু-রঙা আবরণের জন্য বিখ্যাত। পাকার সাথে সাথে প্রতিটি টমেটো হলুদ, কমলা এবং গাঢ় লাল রঙের ছটায় এক একটি অনন্য শিল্পকর্মে পরিণত হয়, যা যেকোনো বাগানের প্রধান আকর্ষণ হয়ে ওঠে।
+   
+   এর সৌন্দর্য শুধু বাইরেই নয়। কাটলে ভেতরে দেখবেন ঘন, মাংসল এবং খুব কম বীজসহ উজ্জ্বল সোনালী-কমলা শাঁস। এর স্বাদ অত্যন্ত মিষ্টি ও ফলের মতো, এবং এতে অ্যাসিডিটি কম, যা প্রতিটি কামড়ে গ্রীষ্মের রোদের নিখুঁত স্বাদ এনে দেয়। এই বিশাল আকারের টমেটোগুলো প্রতিটি প্রায় ২ পাউন্ড (৯০০ গ্রাম) পর্যন্ত হতে পারে, যার একটি স্লাইসই পুরো স্যান্ডউইচ ঢাকার জন্য যথেষ্ট!
+   `, authorImage: authorImg,
+        authorName: "Ismita Chowdhury"
+    },
+    {
+        id: 8, image: goldenPlant, title: "Golden Pothos", category: "Plant", price: "৳ 300 - 350", rating: 5, count: 12, description: `সাধারণ লাল টমেটো কেন ফলাবেন, যখন আপনি একটি আস্ত রংধনু ফলাতে পারেন? বিগ রেইনবো হলো একটি অসাধারণ জাতের বিফস্টেক টমেটো, যা তার বিশাল আকার এবং আকর্ষণীয়, বহু-রঙা আবরণের জন্য বিখ্যাত। পাকার সাথে সাথে প্রতিটি টমেটো হলুদ, কমলা এবং গাঢ় লাল রঙের ছটায় এক একটি অনন্য শিল্পকর্মে পরিণত হয়, যা যেকোনো বাগানের প্রধান আকর্ষণ হয়ে ওঠে।
+   
+   এর সৌন্দর্য শুধু বাইরেই নয়। কাটলে ভেতরে দেখবেন ঘন, মাংসল এবং খুব কম বীজসহ উজ্জ্বল সোনালী-কমলা শাঁস। এর স্বাদ অত্যন্ত মিষ্টি ও ফলের মতো, এবং এতে অ্যাসিডিটি কম, যা প্রতিটি কামড়ে গ্রীষ্মের রোদের নিখুঁত স্বাদ এনে দেয়। এই বিশাল আকারের টমেটোগুলো প্রতিটি প্রায় ২ পাউন্ড (৯০০ গ্রাম) পর্যন্ত হতে পারে, যার একটি স্লাইসই পুরো স্যান্ডউইচ ঢাকার জন্য যথেষ্ট!
+   `, authorImage: authorImg,
+        authorName: "Ismita Chowdhury"
+    },
+];
 const ProductsPage = () => {
     const [selectedCategory, setSelectedCategory] = useState("All");
 
 
-    const products = [
-        {
-            id: 1,
-            image: monsteraImg,
-            title: "Monstera Deliciosa",
-            category: "Plant",
-            price: "৳ 2000 - 3,400",
-            rating: 5,
-            count: 24
-        },
-        {
-            id: 2,
-            image: organicImg,
-            title: "Organic Compost Fertilizer",
-            category: "Fertilizer",
-            price: "৳ 60 - 440",
-            rating: 4.5,
-            count: 12
-        },
-        {
-            id: 3,
-            image: PruningImg,
-            title: "Pruning Shears",
-            category: "Equipment",
-            price: "৳ 180 - 450",
-            rating: 4.5,
-            count: 34
-        },
-        {
-            id: 4,
-            image: SnakeImg,
-            title: "Snake Plant",
-            category: "Plant",
-            price: "৳ 150 - 500",
-            rating: 4.5,
-            count: 35
-        },
-        {
-            id: 5,
-            image: seedsImg,
-            title: "Tomato Seed",
-            category: "Seed",
-            price: "৳ 60 - 300",
-            rating: 5,
-            count: 12
-        },
-        {
-            id: 6,
-            image: medicineImg,
-            title: "Rooting Hormone",
-            category: "Medicine",
-            price: "৳ 200 -400",
-            rating: 5,
-            count: 12
-        },
-        {
-            id: 7,
-            image: equipmentImg,
-            title: "Plant Tob",
-            category: "Equipment",
-            price: "৳ 2000 - 3,400",
-            rating: 5,
-            count: 24
-        },
-        {
-            id: 8,
-            image: goldenPlant,
-            title: "Golden Pothos",
-            category: "Plant",
-            price: "৳ 300 - 350",
-            rating: 5,
-            count: 12
-        },
-    ];
+
     const filteredProducts =
         selectedCategory === "All"
             ? products
@@ -122,7 +111,7 @@ const ProductsPage = () => {
                                     <button onClick={() => setSelectedCategory(item)}
                                         key={item}
                                         href="#"
-                                        className={`hover:text-[#2D5016] transition-colors whitespace-nowrap ${selectedCategory === item ? 'text-[#2D5016] font-medium underline' : ''}`}
+                                        className={`hover:text-[#2D5016] cursor-pointer transition-colors whitespace-nowrap ${selectedCategory === item ? 'text-[#2D5016] font-medium underline' : ''}`}
                                     >
                                         {item}
                                     </button>
