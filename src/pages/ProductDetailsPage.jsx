@@ -1,12 +1,29 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useParams } from "react-router";
 import { FaChevronRight, FaHeart } from "react-icons/fa";
 import star from "../assets/Star.png";
 import halfStar from "../assets/halfStar.png";
 import detailsArrowImg from '../assets/detailsArrow.png'
-
 import { products } from "./ProductsPage";
+import { AuthContext } from "../Context/AuthContext";
+import { FaGoogle, FaFacebook } from "react-icons/fa";
 const ProductDetailsPage = () => {
+    const { user } = useContext(AuthContext);
+    const [showLoginModal, setShowLoginModal] = useState(false);
+    const [showReviewModal, setShowReviewModal] = useState(false);
+
+    const handleWriteReviewClick = () => {
+        if (!user) {
+            setShowLoginModal(true);
+        } else {
+            setShowReviewModal(true);
+        }
+    };
+
+    const handleCloseModals = () => {
+        setShowLoginModal(false);
+        setShowReviewModal(false);
+    };
     const { id } = useParams();
     const [size, setSize] = useState("Medium");
     const [potSize, setPotSize] = useState("Medium");
@@ -284,7 +301,6 @@ const ProductDetailsPage = () => {
                         <h1 className="text-3xl font-bold text-[#2D5016] mb-2">Customer Reviews & Ratings</h1>
                         <p className="text-[#2D5016] text-lg mb-8">See what other gardeners are saying about this product</p>
 
-                        {/* Flex Section with border */}
                         <div className="flex flex-col lg:flex-row gap-8 pb-6 border-b border-gray-200 ">
                             {/* Left: Overall Rating */}
                             <div className="flex-1 flex flex-col items-center lg:items-start space-y-6 px-4 sm:px-6 lg:px-0">
@@ -322,13 +338,222 @@ const ProductDetailsPage = () => {
                                 ))}
                             </div>
                         </div>
-
-                        {/* Button below the border */}
                         <div className="mt-6 flex justify-center lg:justify-start">
-                            <button className="bg-[#2D5016] text-white px-6 py-3 rounded-lg hover:bg-[#3c6d23] transition w-full sm:w-auto cursor-pointer">
+                            <button onClick={handleWriteReviewClick} className="bg-[#2D5016] text-white px-6 py-3 rounded-lg hover:bg-[#3c6d23] transition w-full sm:w-auto cursor-pointer">
                                 Write Review
                             </button>
                         </div>
+                        {showLoginModal && (
+                            <div className="fixed inset-0  bg-opacity-50 flex items-center justify-center z-50 p-4">
+                                <div className="relative bg-white rounded-2xl shadow-xl w-full max-w-sm sm:max-w-md p-6 sm:p-8">
+                                    {/* Header */}
+                                    <div className="text-center mb-6">
+                                        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
+                                            Login to your Account
+                                        </h2>
+                                        <p className="text-gray-600 text-base sm:text-lg">To Write Review</p>
+                                    </div>
+
+                                    {/* Social Login */}
+                                    <div className="flex gap-3 sm:gap-4 mb-6">
+                                        <button className="flex-1 flex items-center justify-center gap-2 bg-white border border-gray-300 text-gray-700 py-2.5 sm:py-3 px-4 rounded-lg font-medium hover:bg-gray-50 transition-colors duration-200">
+                                            <FaGoogle className="text-red-500" />
+                                            <span className="text-sm sm:text-base">Google</span>
+                                        </button>
+                                        <button className="flex-1 flex items-center justify-center gap-2 bg-[#1877F2] text-white py-2.5 sm:py-3 px-4 rounded-lg font-medium hover:bg-[#166FE5] transition-colors duration-200">
+                                            <FaFacebook className="text-white" />
+                                            <span className="text-sm sm:text-base">Facebook</span>
+                                        </button>
+                                    </div>
+
+                                    {/* Divider */}
+                                    <div className="relative mb-6">
+                                        <div className="absolute inset-0 flex items-center">
+                                            <div className="w-full border-t border-gray-300"></div>
+                                        </div>
+                                        <div className="relative flex justify-center text-sm">
+                                            <span className="px-2 bg-white text-gray-500">Or continue with</span>
+                                        </div>
+                                    </div>
+
+                                    {/* Login Form */}
+                                    <form className="space-y-5">
+                                        <div>
+                                            <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                                                Phone Number
+                                            </label>
+                                            <input
+                                                id="phone"
+                                                name="phone"
+                                                type="tel"
+                                                placeholder="Enter your phone number"
+                                                className="w-full px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2D5016] focus:border-[#2D5016] transition-colors"
+                                            />
+                                        </div>
+
+                                        <div>
+                                            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+                                                Password
+                                            </label>
+                                            <input
+                                                id="password"
+                                                name="password"
+                                                type="password"
+                                                placeholder="Enter your password"
+                                                className="w-full px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2D5016] focus:border-[#2D5016] transition-colors"
+                                            />
+                                        </div>
+
+                                        <div className="flex items-center justify-between">
+                                            <label className="flex items-center text-sm text-gray-700">
+                                                <input
+                                                    id="remember-me"
+                                                    name="remember-me"
+                                                    type="checkbox"
+                                                    className="h-4 w-4 text-[#2D5016] focus:ring-[#2D5016] border-gray-300 rounded mr-2"
+                                                />
+                                                Remember Me
+                                            </label>
+                                            <a href="#" className="text-sm font-medium text-[#2D5016] hover:text-[#2D5016]/80">
+                                                Forgot Password?
+                                            </a>
+                                        </div>
+
+                                        <button
+                                            type="submit"
+                                            className="w-full bg-[#2D5016] text-white py-2.5 sm:py-3 px-4 rounded-lg font-semibold hover:bg-[#2D5016]/90 focus:outline-none focus:ring-2 focus:ring-[#2D5016] focus:ring-offset-2 transition-colors"
+                                        >
+                                            Login
+                                        </button>
+                                    </form>
+
+                                    <div className="mt-6 text-center">
+                                        <p className="text-gray-600 text-sm sm:text-base">
+                                            Don't have an account?{" "}
+                                            <a href="#" className="font-medium text-[#2D5016] hover:text-[#2D5016]/80 transition-colors">
+                                                Register
+                                            </a>
+                                        </p>
+                                    </div>
+
+                                    {/* Close Button */}
+                                    <button
+                                        onClick={handleCloseModals}
+                                        className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+                                    >
+                                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+
+
+                        {/* Review Writing Modal */}
+                        {showReviewModal && (
+                            <div className="fixed inset-0  bg-opacity-40 flex items-center justify-center z-50 p-4">
+                                <div className="relative bg-white rounded-2xl shadow-xl p-6 sm:p-8 w-full max-w-md sm:max-w-lg lg:max-w-xl">
+                                    <div className="text-center mb-6 sm:mb-8">
+                                        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
+                                            Write a Review
+                                        </h2>
+                                        <p className="text-gray-600 text-base sm:text-lg">
+                                            Share your experience with {product.title}
+                                        </p>
+                                    </div>
+
+                                    {/* Rating Section */}
+                                    <div className="mb-6">
+                                        <label className="block text-sm font-medium text-gray-700 mb-3 text-center">
+                                            Your Rating
+                                        </label>
+                                        <div className="flex gap-2 justify-center">
+                                            {[1, 2, 3, 4, 5].map((star) => (
+                                                <button
+                                                    key={star}
+                                                    className="text-2xl sm:text-3xl text-gray-300 hover:text-yellow-400 focus:outline-none"
+                                                >
+                                                    ★
+                                                </button>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    {/* Review Form */}
+                                    <form className="space-y-5 sm:space-y-6">
+                                        <div>
+                                            <label
+                                                htmlFor="review-title"
+                                                className="block text-sm font-medium text-gray-700 mb-2"
+                                            >
+                                                Review Title
+                                            </label>
+                                            <input
+                                                id="review-title"
+                                                name="review-title"
+                                                type="text"
+                                                placeholder="Give your review a title"
+                                                className="w-full px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2D5016] focus:border-[#2D5016] transition-colors"
+                                            />
+                                        </div>
+
+                                        <div>
+                                            <label
+                                                htmlFor="review-text"
+                                                className="block text-sm font-medium text-gray-700 mb-2"
+                                            >
+                                                Your Review
+                                            </label>
+                                            <textarea
+                                                id="review-text"
+                                                name="review-text"
+                                                rows="5"
+                                                placeholder="Share your experience with this product..."
+                                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2D5016] focus:border-[#2D5016] transition-colors resize-none"
+                                            ></textarea>
+                                        </div>
+
+                                        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                                            <button
+                                                type="button"
+                                                onClick={handleCloseModals}
+                                                className="flex-1 bg-gray-300 text-gray-700 py-2.5 sm:py-3 rounded-lg font-semibold hover:bg-gray-400 transition-colors"
+                                            >
+                                                Cancel
+                                            </button>
+                                            <button
+                                                type="submit"
+                                                className="flex-1 bg-[#2D5016] text-white py-2.5 sm:py-3 rounded-lg font-semibold hover:bg-[#3c6d23] transition-colors"
+                                            >
+                                                Submit Review
+                                            </button>
+                                        </div>
+                                    </form>
+
+                                    {/* Close Button */}
+                                    <button
+                                        onClick={handleCloseModals}
+                                        className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
+                                    >
+                                        <svg
+                                            className="w-6 h-6"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth={2}
+                                                d="M6 18L18 6M6 6l12 12"
+                                            />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+
                     </div>
                 </div>
                 <div className="px-4 sm:px-6 lg:px-0 ">

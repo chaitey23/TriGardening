@@ -8,6 +8,8 @@ import BlogDetails from "../pages/BlogDetails";
 import AboutPage from "../pages/AboutPage";
 import AIChatbotPage from "../pages/AIChatbotPage";
 import CartPage from "../pages/CartPage";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
 
 
 export const router = createBrowserRouter([
@@ -45,6 +47,14 @@ export const router = createBrowserRouter([
         {
             path: "/cart",
             element: <CartPage></CartPage>
+        },
+        {
+            path: "/login",
+            element: <Login></Login>
+        },
+        {
+            path: "/register",
+            element: <Register></Register>
         }
 
 

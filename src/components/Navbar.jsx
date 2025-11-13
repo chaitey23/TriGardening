@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import logoImg from '../assets/logo 1.png';
 import { Link, NavLink } from 'react-router';
+import { AuthContext } from '../Context/AuthContext';
+import toast from 'react-hot-toast';
 
 const Navbar = () => {
+    const { user, logout } = useContext(AuthContext);
+    const [open, setOpen] = useState(false);
+
+    const handleLogout = () => {
+        logout()
+            .then(() => {
+                toast.success("Logged out Successfully!");
+                setOpen(false);
+            })
+            .catch((error) => {
+                console.log(error);
+                toast.error('Logout Failed');
+            });
+    };
+
     const links = (
         <>
             <NavLink to='/'>
@@ -14,7 +31,7 @@ const Navbar = () => {
             <NavLink to='/blogs'>
                 <li className="hover:text-[#CC7722] transition-colors px-4 py-2">Blog</li>
             </NavLink>
-            <NavLink to='/plant-clinic'>
+            <NavLink to='/'>
                 <li className="hover:text-[#CC7722] transition-colors px-4 py-2">Plant Clinic</li>
             </NavLink>
         </>
@@ -54,7 +71,7 @@ const Navbar = () => {
                 <ul className="menu menu-horizontal gap-8 text-lg font-medium">
                     {links}
                 </ul>
-                {/* Call Now Button - Desktop (Plant Clinic-এর পরে) */}
+
                 <button className="bg-[#CC7722] hover:bg-[#b5691d] text-white px-6 py-3 rounded-xl transition-colors shadow-lg font-semibold text-sm lg:text-base whitespace-nowrap">
                     Call Now
                 </button>
@@ -87,23 +104,51 @@ const Navbar = () => {
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
                                 strokeWidth={2}
-                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0z"
                             />
                         </svg>
 
-                        {/* Badge positioning fix */}
                         <span className="absolute -top-1 -right-1 bg-[#CC7722] text-white text-[10px] lg:text-xs rounded-full w-4 h-4 lg:w-5 lg:h-5 flex items-center justify-center">
                             3
                         </span>
                     </div>
                 </Link>
 
+                {/* 👇 Conditional Login/Profile */}
+                <div className="relative hidden lg:block">
+                    {!user ? (
+                        <Link
+                            to="/login"
+                            className="bg-[#CC7722] hover:bg-[#b5691d] text-white px-4 py-2 rounded-xl transition-colors font-semibold"
+                        >
+                            Login
+                        </Link>
+                    ) : (
+                        <div className="relative">
+                            <button
+                                onClick={() => setOpen(!open)}
+                                className="cursor-pointer hover:text-[#CC7722] transition-colors p-2"
+                            >
+                                <svg className="w-5 h-5 lg:w-6 lg:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                </svg>
+                            </button>
 
-                {/* User Profile Icon */}
-                <div className="hidden lg:block cursor-pointer hover:text-[#CC7722] transition-colors p-2">
-                    <svg className="w-5 h-5 lg:w-6 lg:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
+                            {open && (
+                                <div className="absolute right-0 mt-2 w-40 bg-white text-gray-800 rounded-lg shadow-lg z-50">
+                                    <p className="px-4 py-2 border-b text-sm font-medium">
+                                        {user.displayName || "User"}
+                                    </p>
+                                    <button
+                                        onClick={handleLogout}
+                                        className="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100 rounded-b-lg"
+                                    >
+                                        Logout
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
