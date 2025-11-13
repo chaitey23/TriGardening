@@ -1,14 +1,48 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { FaGoogle, FaFacebook } from 'react-icons/fa';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
+import { AuthContext } from '../Context/AuthContext';
+import toast from 'react-hot-toast';
 
 const Login = () => {
+    const { loginUser, googleSignIn } = useContext(AuthContext);
+    const [phone, setPhone] = useState('');
+    const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+
+    // Email/Password login
+    const handleLogin = (e) => {
+        e.preventDefault();
+        loginUser(phone, password)
+            .then((res) => {
+                toast.success('Login Successful!');
+                setPhone('');
+                setPassword('');
+                navigate('/'); // Navigate to Home
+            })
+            .catch((err) => {
+                console.error(err.message);
+                toast.error('Login Failed!');
+            });
+    };
+
+    // Google login
+    const handleGoogleLogin = () => {
+        googleSignIn()
+            .then((res) => {
+                toast.success('Google Login Successful!');
+                navigate('/');
+            })
+            .catch((err) => {
+                console.error(err.message);
+                toast.error('Google Login Failed!');
+            });
+    };
+
     return (
         <div className="min-h-screen pt-24 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-md w-full space-y-8">
-                {/* Login Card */}
                 <div className="bg-white rounded-2xl shadow-xl p-8">
-                    {/* Header */}
                     <div className="text-center mb-8">
                         <h2 className="text-3xl font-bold text-gray-900 mb-2">
                             Login to your Account
@@ -18,15 +52,15 @@ const Login = () => {
                         </p>
                     </div>
 
-                    {/* Social Login Buttons - Side by Side */}
+                    {/* Social Login */}
                     <div className="flex gap-4 mb-6">
-                        {/* Google Login Button */}
-                        <button className="flex-1 flex items-center justify-center gap-2 bg-white border border-gray-300 text-gray-700 py-3 px-4 rounded-lg font-medium hover:bg-gray-50 transition-colors duration-200">
+                        <button
+                            onClick={handleGoogleLogin}
+                            className="flex-1 flex items-center justify-center gap-2 bg-white border border-gray-300 text-gray-700 py-3 px-4 rounded-lg font-medium hover:bg-gray-50 transition-colors duration-200"
+                        >
                             <FaGoogle className="text-red-500" />
                             <span className="text-sm">Google</span>
                         </button>
-
-                        {/* Facebook Login Button */}
                         <button className="flex-1 flex items-center justify-center gap-2 bg-[#1877F2] text-white py-3 px-4 rounded-lg font-medium hover:bg-[#166FE5] transition-colors duration-200">
                             <FaFacebook className="text-white" />
                             <span className="text-sm">Facebook</span>
@@ -44,8 +78,7 @@ const Login = () => {
                     </div>
 
                     {/* Login Form */}
-                    <form className="space-y-6">
-                        {/* Phone Number Field */}
+                    <form className="space-y-6" onSubmit={handleLogin}>
                         <div>
                             <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
                                 Phone Number
@@ -55,11 +88,13 @@ const Login = () => {
                                 name="phone"
                                 type="tel"
                                 placeholder="Enter your phone number"
+                                value={phone}
+                                onChange={(e) => setPhone(e.target.value)}
                                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2D5016] focus:border-[#2D5016] transition-colors"
+                                required
                             />
                         </div>
 
-                        {/* Password Field */}
                         <div>
                             <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
                                 Password
@@ -69,11 +104,13 @@ const Login = () => {
                                 name="password"
                                 type="password"
                                 placeholder="Enter your password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2D5016] focus:border-[#2D5016] transition-colors"
+                                required
                             />
                         </div>
 
-                        {/* Remember Me & Forgot Password */}
                         <div className="flex items-center justify-between">
                             <div className="flex items-center">
                                 <input
@@ -94,7 +131,6 @@ const Login = () => {
                             </div>
                         </div>
 
-                        {/* Login Button */}
                         <button
                             type="submit"
                             className="w-full bg-[#2D5016] text-white py-3 px-4 rounded-lg font-semibold hover:bg-[#2D5016]/90 focus:outline-none focus:ring-2 focus:ring-[#2D5016] focus:ring-offset-2 transition-colors"
@@ -103,7 +139,6 @@ const Login = () => {
                         </button>
                     </form>
 
-                    {/* Footer */}
                     <div className="mt-6 text-center">
                         <p className="text-gray-600">
                             Don't have an account?{' '}
@@ -114,7 +149,6 @@ const Login = () => {
                     </div>
                 </div>
 
-                {/* Additional Info */}
                 <div className="text-center text-gray-500 text-sm">
                     <p>By logging in, you agree to our Terms of Service and Privacy Policy</p>
                 </div>

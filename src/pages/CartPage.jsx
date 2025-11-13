@@ -89,9 +89,11 @@ const CartPage = () => {
                                 <span className="text-[#CC7722] text-xl font-bold">৳ 1000</span>
                             </div>
 
-                            <button className="w-full bg-[#2D5016] hover:bg-[#3c6d23] text-white py-3 rounded-lg font-semibold mt-2 transition-colors">
-                                Proceed to Checkout
-                            </button>
+                            <Link to='/checkout'>
+                                <button className="w-full bg-[#2D5016] hover:bg-[#3c6d23] text-white py-3 rounded-lg font-semibold mt-2 transition-colors">
+                                    Proceed to Checkout
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
