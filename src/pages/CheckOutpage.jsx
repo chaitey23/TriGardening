@@ -3,6 +3,7 @@ import { AuthContext } from '../Context/AuthContext';
 import leafPlant from '../assets/Pexels Photo by Fabian Stroobants.png';
 import monstera from '../assets/Group 6.png';
 import vermi from '../assets/medicine.png';
+import { Link } from 'react-router';
 
 const CheckOutPage = () => {
     const { user } = useContext(AuthContext);
@@ -260,12 +261,14 @@ const CheckOutPage = () => {
                                             />
                                         </div>
 
-                                        <button
-                                            type="submit"
-                                            className="w-full bg-[#2D5016] text-white py-3 px-4 rounded-lg font-semibold hover:bg-[#3c6d23] transition-colors mt-6"
-                                        >
-                                            Proceed to Payment
-                                        </button>
+                                        <Link to='/confirm'>
+                                            <button
+                                                type="submit"
+                                                className="w-full bg-[#2D5016] text-white py-3 px-4 rounded-lg font-semibold hover:bg-[#3c6d23] transition-colors mt-6"
+                                            >
+                                                Proceed to Payment
+                                            </button>
+                                        </Link>
                                     </form>
                                 </>
                             ) : (
@@ -383,9 +386,11 @@ const CheckOutPage = () => {
                             </div>
 
                             {/* Proceed to Checkout Button */}
-                            <button className="w-full bg-[#2D5016] text-white py-3 rounded-lg font-semibold hover:bg-[#3c6d23] transition-colors mt-6">
-                                Submit
-                            </button>
+                            <Link to='/confirm'>
+                                <button className="w-full bg-[#2D5016] text-white py-3 rounded-lg font-semibold hover:bg-[#3c6d23] transition-colors mt-6">
+                                    Submit
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

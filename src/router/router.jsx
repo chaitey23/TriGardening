@@ -11,6 +11,7 @@ import CartPage from "../pages/CartPage";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import CheckOutPage from "../pages/CheckOutpage";
+import OrderConfirmationPage from "../pages/OrderConfrim";
 
 
 export const router = createBrowserRouter([
@@ -60,6 +61,10 @@ export const router = createBrowserRouter([
         {
             path: "/checkout",
             element: <CheckOutPage></CheckOutPage>
+        },
+        {
+            path: "/confirm",
+            element: <OrderConfirmationPage></OrderConfirmationPage>
         }
 
 
